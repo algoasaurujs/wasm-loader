@@ -1,11 +1,21 @@
 {
-  "name": "wasm-loader",
-  "private": true,
+  "name": "@algoasaurujs/wasm-loader",
   "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Algoasaurujs/wasm-loader.git"
+  },
+  "author": "Ehsan Samavati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Algoasaurujs/wasm-loader/issues"
+  },
+  "homepage": "https://github.com/Algoasaurujs/wasm-loader#readme",
+  "description": "",
   "main": "./dist/wasm-loader.umd.js",
   "module": "./dist/wasm-loader.es.js",
   "exports": {
