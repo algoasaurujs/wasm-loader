@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "wasm-loader",
-      fileName: "wasm-loader",
+      fileName: "index",
     },
     rollupOptions: {
       external: ["fs", "path"]

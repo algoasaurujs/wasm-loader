@@ -1,6 +1,6 @@
 {
   "name": "@algoasaurujs/wasm-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "files": [
     "dist"
@@ -16,12 +16,12 @@
   },
   "homepage": "https://github.com/Algoasaurujs/wasm-loader#readme",
   "description": "",
-  "main": "./dist/wasm-loader.umd.js",
-  "module": "./dist/wasm-loader.es.js",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.js",
   "exports": {
     ".": {
-      "import": "./dist/wasm-loader.es.js",
-      "require": "./dist/wasm-loader.umd.js"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.js"
     }
   },
   "scripts": {
