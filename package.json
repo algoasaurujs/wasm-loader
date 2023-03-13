@@ -1,0 +1,28 @@
+{
+  "name": "wasm-loader",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/wasm-loader.umd.js",
+  "module": "./dist/wasm-loader.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/wasm-loader.es.js",
+      "require": "./dist/wasm-loader.umd.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.2",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vite-plugin-dts": "^2.1.0"
+  }
+}
