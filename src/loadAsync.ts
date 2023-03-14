@@ -1,14 +1,14 @@
 import { dataURIPrefix } from "./constants";
 import { LoaderInput, LoaderResult } from "./types";
 import { isDataURI, isFileURI } from "./utils";
+import { Buffer } from "buffer";
 
 export const loadAsync = async <
   Exports extends WebAssembly.Exports = any,
-  Imports extends WebAssembly.Imports = any
+  Imports extends WebAssembly.Imports = any,
 >(
-  input: LoaderInput<Imports>
+  input: LoaderInput<Imports>,
 ): Promise<LoaderResult<Exports>> => {
-
   const _readBufferFromFileUrl = async (filename: string): Promise<Buffer> => {
     const path = new URL(filename);
     const fs = require("fs");
@@ -52,6 +52,6 @@ export const loadAsync = async <
 
   return {
     instance,
-    exports: <any>instance.exports,
+    exports: <any> instance.exports,
   };
 };

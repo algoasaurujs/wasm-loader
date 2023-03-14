@@ -1,6 +1,7 @@
 import { dataURIPrefix } from "./constants";
 import { LoaderInput, LoaderResult } from "./types";
 import { isDataURI, isFileURI } from "./utils";
+import { Buffer } from "buffer";
 
 export const loadSync = <
   Exports extends WebAssembly.Exports = any,
