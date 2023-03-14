@@ -1,7 +1,7 @@
 import { dataURIPrefix } from "./constants";
 import { LoaderInput, LoaderResult } from "./types";
 import { isDataURI, isFileURI } from "./utils";
-import { Buffer } from "buffer";
+import BufferPoly from "buffer";
 
 export const loadAsync = async <
   Exports extends WebAssembly.Exports = any,
@@ -18,13 +18,13 @@ export const loadAsync = async <
 
   const _readBufferFromDataURI = async (dataURI: string): Promise<Buffer> => {
     const content = dataURI.replace(dataURIPrefix, "");
-    return Buffer.from(content, "base64");
+    return BufferPoly.Buffer.from(content, "base64");
   };
 
   const _readBufferFromURL = async (url: string): Promise<Buffer> => {
     const res = await fetch(url);
     const arrayBuffer = await res.arrayBuffer();
-    return Buffer.from(arrayBuffer);
+    return BufferPoly.Buffer.from(arrayBuffer);
   };
 
   const _readBuffer = (filename: string): Promise<Buffer> => {

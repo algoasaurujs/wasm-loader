@@ -1,7 +1,7 @@
 import { dataURIPrefix } from "./constants";
 import { LoaderInput, LoaderResult } from "./types";
 import { isDataURI, isFileURI } from "./utils";
-import { Buffer } from "buffer";
+import BufferPoly from "buffer";
 
 export const loadSync = <
   Exports extends WebAssembly.Exports = any,
@@ -19,7 +19,7 @@ export const loadSync = <
 
   const _readBufferFromDataURI = (dataURI: string): Buffer => {
     const content = dataURI.replace(dataURIPrefix, "");
-    return Buffer.from(content, "base64");
+    return BufferPoly.Buffer.from(content, "base64");
   };
 
   const _readBufferFromURL = (url: string): Buffer => {
@@ -27,7 +27,7 @@ export const loadSync = <
     xhr.open("GET", url, false);
     xhr.responseType = "arraybuffer";
     xhr.send(null);
-    return Buffer.from(xhr.response);
+    return BufferPoly.Buffer.from(xhr.response);
   };
 
   const _readBuffer = (filename: string): Buffer => {
