@@ -1,6 +1,6 @@
 {
   "name": "@algoasaurujs/wasm-loader",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "files": [
     "src",
@@ -27,6 +27,7 @@
     }
   },
   "scripts": {
+    "prepublish": "npm build",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
