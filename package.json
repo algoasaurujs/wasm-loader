@@ -1,6 +1,6 @@
 {
   "name": "@algoasaurujs/wasm-loader",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "type": "module",
   "files": [
     "src",
