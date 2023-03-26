@@ -1,42 +1,38 @@
-import { LoaderInput, LoaderResult } from "../types";
+import { LoaderSync } from "../types";
 import { isDataURI } from "../utils";
-import { dataURIPrefix } from "../constants";
+import { loadFromDataURL } from "./loadFromDataURL";
 
-export const loadBrowserSync = <
-  Exports extends WebAssembly.Exports = any,
-  Imports extends WebAssembly.Imports = any
->(
-  input: LoaderInput<Imports>
-): LoaderResult<Exports> => {
-
-  // var binaryArray = new Uint8Array(new TextEncoder().encode(binaryString));
-  const _base64ToBuffer = (base64: string): number[] => {
-    return window.atob(base64).split('').map(function (c) { return c.charCodeAt(0); })
-  }
-
-  const _loadFromDataURL = (): WebAssembly.Instance => {
-    const dataURI = input.filename;
-    const content = dataURI.replace(dataURIPrefix, "");
-    const wasmBytes = new Uint8Array(_base64ToBuffer(content));
-    const module = new WebAssembly.Module(wasmBytes);
-    const instance = new WebAssembly.Instance(module, input?.importObject);
-    return instance;
-  };
-
+/**
+ * Loads a WebAssembly module from a URL or a data URL in the browser **synchronously**
+ * and returns an instance of the module.
+ *
+ * @param input - The input for the loader containing the filename and the import object.
+ * @returns The loaded WebAssembly module instance and its exports.
+ */
+export const loadBrowserSync: LoaderSync = (input) => {
+  /**
+   * Loads a WebAssembly module from the specified URL and returns an instance of it.
+   *
+   * @returns An instance of the loaded WebAssembly module.
+   */
   const _loadFromURL = (): WebAssembly.Instance => {
     const xhr = new XMLHttpRequest();
     xhr.open("GET", input.filename, false);
     xhr.send(null);
-    const res: string = xhr.response;
-    const base64 = window.btoa(res);
-    const wasmBytes = new Uint8Array(_base64ToBuffer(base64));
-    const module = new WebAssembly.Module(wasmBytes);
+    const module = WebAssembly.instantiate(xhr.response);
     return new WebAssembly.Instance(module, input?.importObject);
   };
 
+  /**
+   * Instantiates a WebAssembly module from a URL or a data URL,
+   * depending on the format of the input filename,
+   * and returns an instance of the module.
+   * @returns An instance of the loaded WebAssembly module.
+   */
   const _instantiate = (): WebAssembly.Instance => {
+    // Check whether the input filename is a data URL
     if (isDataURI(input.filename)) {
-      return _loadFromDataURL()
+      return loadFromDataURL(input.filename, input?.importObject);
     }
     return _loadFromURL();
   };

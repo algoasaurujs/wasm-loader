@@ -8,14 +8,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Algoasaurujs/wasm-loader.git"
+    "url": "git+https://github.com/algoasaurujs/wasm-loader.git"
   },
   "author": "Ehsan Samavati",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Algoasaurujs/wasm-loader/issues"
+    "url": "https://github.com/algoasaurujs/wasm-loader/issues"
   },
-  "homepage": "https://github.com/Algoasaurujs/wasm-loader#readme",
+  "homepage": "https://github.com/algoasaurujs/wasm-loader#readme",
   "description": "",
   "main": "./dist/index.umd.js",
   "module": "./dist/index.js",
