@@ -1,3 +1,5 @@
+import { readFileSync } from "fs";
+import syncRequest from "sync-request";
 import { dataURIPrefix } from "./../constants";
 import { LoaderSync } from "./../types";
 import { isDataURI, isFileURI } from "./../utils";
@@ -15,9 +17,7 @@ export const loadNodejsSync: LoaderSync = (input) => {
    */
   const _readBufferFromFileUrl = (filename: string): Buffer => {
     const path = new URL(filename);
-    const fs = require("fs");
-    const content: Buffer = fs.readFileSync(path);
-    return content;
+    return readFileSync(path);
   };
 
   /**
@@ -36,7 +36,6 @@ export const loadNodejsSync: LoaderSync = (input) => {
    * @returns The buffer containing the URL contents.
    */
   const _readBufferFromURL = (url: string): Buffer => {
-    const syncRequest = require("sync-request");
     const res = syncRequest("GET", url);
     return Buffer.from(res.getBody());
   };

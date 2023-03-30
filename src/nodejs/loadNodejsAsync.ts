@@ -1,6 +1,8 @@
-import { dataURIPrefix } from "./../constants";
-import { LoaderAsync } from "./../types";
-import { isDataURI, isFileURI } from "./../utils";
+import { promises } from 'fs';
+import axios from 'axios';
+import { dataURIPrefix } from './../constants';
+import { LoaderAsync } from './../types';
+import { isDataURI, isFileURI } from './../utils';
 
 /**
  * Loads a WebAssembly module in Node.js environment asynchronously based on the input filename.
@@ -8,7 +10,7 @@ import { isDataURI, isFileURI } from "./../utils";
  * @param input - Object that contains the input filename and import object for the WebAssembly module.
  * @returns A Promise that resolves to an object containing the instance and exports of the loaded WebAssembly module.
  */
-export const loadNodejsAsync: LoaderAsync = async (input) => {
+export const loadNodejsAsync: LoaderAsync = async input => {
   /**
    * Reads and returns a Buffer containing the contents of a file from the file URL.
    * @param filename - The file URL to read from.
@@ -16,9 +18,7 @@ export const loadNodejsAsync: LoaderAsync = async (input) => {
    */
   const _readBufferFromFileUrl = async (filename: string): Promise<Buffer> => {
     const path = new URL(filename);
-    const fs = require("fs");
-    const content: Buffer = await fs.promises.readFile(path);
-    return content;
+    return promises.readFile(path);
   };
 
   /**
@@ -27,8 +27,8 @@ export const loadNodejsAsync: LoaderAsync = async (input) => {
    * @returns A Promise that resolves to a Buffer containing the raw bytes of the decoded data.
    */
   const _readBufferFromDataURI = async (dataURI: string): Promise<Buffer> => {
-    const content = dataURI.replace(dataURIPrefix, "");
-    return Buffer.from(content, "base64");
+    const content = dataURI.replace(dataURIPrefix, '');
+    return Buffer.from(content, 'base64');
   };
 
   /**
@@ -37,10 +37,8 @@ export const loadNodejsAsync: LoaderAsync = async (input) => {
    * @returns A Promise that resolves to an ArrayBuffer containing the contents of the URL.
    */
   const _readBufferFromURL = async (url: string): Promise<ArrayBuffer> => {
-    const nodeFetch = require("node-fetch");
-    const res = await nodeFetch(url);
-    const arrayBuffer = await res.arrayBuffer();
-    return arrayBuffer;
+    const res = await axios(url, { responseType: 'arraybuffer' });
+    return res.data
   };
 
   /**
