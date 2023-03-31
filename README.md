@@ -78,4 +78,4 @@ function loadSync(modulePathOrUrl: string): WebAssembly.Module;
 
 ## License
 
-**wasm-loader** is licensed under the MIT License. See [LICENSE]() for more information.
+**wasm-loader** is licensed under the MIT License. See [LICENSE](./LICENSE) for more information.
