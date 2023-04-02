@@ -26,6 +26,7 @@ In addition to the tools listed above, there are also many resources available o
 - [NodeJS](#nodejs)
   - [Async](#nodejsasync)
   - [Sync](#nodejssync)
+- [Creating Library](#creatinglibrary)
 
 ## [Installation](#installation)
 
@@ -91,8 +92,11 @@ Loads a WebAssembly module from a URL or a data URL in the browser **asynchronou
 
 ```typescript
 import { loadBrowserAsync } from '@algoasaurujs/wasm-loader';
-async function loadBrowserAsync<Exports, Imports>(input: [`LoaderInput<Imports>`](#loaderinputtype)): Promise<[`LoaderResult<Exports>`](#loaderresulttype)>;
+async function loadBrowserAsync<Exports, Imports>(input: LoaderInput<Imports>): Promise<LoaderResult<Exports>>;
 ```
+[LoaderInput<Imports>](#loaderinputtype)
+
+[LoaderResult<Exports>](#loaderresulttype)
 
 ### [Loading Sync in Browser](#browserasync)
 
@@ -100,8 +104,52 @@ Loads a WebAssembly module from a URL or a data URL in the browser **synchronous
 
 ```typescript
 import { loadBrowserSync } from '@algoasaurujs/wasm-loader';
-function loadBrowserSync<Exports, Imports>(input: [`LoaderInput<Imports>`](#loaderinputtype)): [`LoaderResult<Exports>`](#loaderresulttype);
+function loadBrowserSync<Exports, Imports>(input: LoaderInput<Imports>): LoaderResult<Exports>;
 ```
+[LoaderInput<Imports>](#loaderinputtype)
+
+[LoaderResult<Exports>](#loaderresulttype)
+
+## [Nodejs](#Nodejs)
+
+### [Loading Async in Nodejs](#nodejsasync)
+
+Loads a WebAssembly module from a URL or a data URL in the Nodejs **asynchronously** and returns an instance of the module.
+
+```typescript
+import { loadNodejsAsync } from '@algoasaurujs/wasm-loader';
+async function loadNodejsAsync<Exports, Imports>(input: LoaderInput<Imports>): Promise<LoaderResult<Exports>>;
+```
+[LoaderInput<Imports>](#loaderinputtype)
+
+[LoaderResult<Exports>](#loaderresulttype)
+
+### [Loading Sync in Nodejs](#nodejsasync)
+
+Loads a WebAssembly module from a URL or a data URL in the Nodejs **synchronously** and returns an instance of the module.
+
+```typescript
+import { loadNodejsSync } from '@algoasaurujs/wasm-loader';
+function loadNodejsSync<Exports, Imports>(input: LoaderInput<Imports>): LoaderResult<Exports>;
+```
+[LoaderInput<Imports>](#loaderinputtype)
+
+[LoaderResult<Exports>](#loaderresulttype)
+
+## [Creating Library](#creatinglibrary)
+
+This function determines the appropriate loader to use based on the current environment (browser or Node.js).
+
+```typescript
+import { loadAsync } from '@algoasaurujs/wasm-loader';
+async function loadAsync<Exports, Imports>(input: LoaderInput<Imports>): Promise<LoaderResult<Exports>>;
+// OR
+import { loadSync } from '@algoasaurujs/wasm-loader';
+async function loadSync<Exports, Imports>(input: LoaderInput<Imports>): LoaderResult<Exports>;
+```
+[LoaderInput<Imports>](#loaderinputtype)
+
+[LoaderResult<Exports>](#loaderresulttype)
 
 ## Contributing
 
