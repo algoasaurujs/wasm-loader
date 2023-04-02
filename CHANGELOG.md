@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.12](https://github.com/Algoasaurujs/wasm-loader/compare/v1.0.11...v1.0.12) (2023-04-02)
+
+
+### Bug Fixes
+
+* unused vite config removed ([1b5ea80](https://github.com/Algoasaurujs/wasm-loader/commit/1b5ea80806c9016b5574dd430c9202219ddba85a))
+
 ### 1.0.11 (2023-03-30)
 
 
