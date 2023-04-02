@@ -91,7 +91,7 @@ Loads a WebAssembly module from a URL or a data URL in the browser **asynchronou
 
 ```typescript
 import { loadBrowserAsync } from '@algoasaurujs/wasm-loader';
-async function loadBrowserAsync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinputtype)): Promise<[LoaderResult<Exports>](#loaderresulttype)>;
+async function loadBrowserAsync<Exports, Imports>(input: [`LoaderInput<Imports>`](#loaderinputtype)): Promise<[`LoaderResult<Exports>`](#loaderresulttype)>;
 ```
 
 ### [Loading Sync in Browser](#browserasync)
@@ -100,7 +100,7 @@ Loads a WebAssembly module from a URL or a data URL in the browser **synchronous
 
 ```typescript
 import { loadBrowserSync } from '@algoasaurujs/wasm-loader';
-function loadBrowserSync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinputtype)): [LoaderResult<Exports>](#loaderresulttype);
+function loadBrowserSync<Exports, Imports>(input: [`LoaderInput<Imports>`](#loaderinputtype)): [`LoaderResult<Exports>`](#loaderresulttype);
 ```
 
 ## Contributing
