@@ -67,7 +67,7 @@ The `loadAsync` and `loadSync` functions both take a single argument, which can 
 
 ## [Types](#types)
 
-### [LoaderResult Type](#loaderresult-type)
+### [Loader Result Type](#loaderresulttype)
 ```typescript
 type LoaderResult<E> = {
   instance: WebAssembly.Instance;
@@ -75,7 +75,7 @@ type LoaderResult<E> = {
 };
 ```
 
-### [LoaderInput Type](#loaderinput-type)
+### [Loader Input Type](#loaderinputtype)
 ```typescript
 export type LoaderInput<I> = {
   filename: string;
@@ -91,7 +91,7 @@ Loads a WebAssembly module from a URL or a data URL in the browser **asynchronou
 
 ```typescript
 import { loadBrowserAsync } from '@algoasaurujs/wasm-loader';
-async function loadBrowserAsync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinput-type)): Promise<[LoaderResult<Exports>](#loaderresult-type)>;
+async function loadBrowserAsync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinputtype)): Promise<[LoaderResult<Exports>](#loaderresulttype)>;
 ```
 
 ### [Loading Sync in Browser](#browserasync)
@@ -100,7 +100,7 @@ Loads a WebAssembly module from a URL or a data URL in the browser **synchronous
 
 ```typescript
 import { loadBrowserSync } from '@algoasaurujs/wasm-loader';
-function loadBrowserSync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinput-type)): [LoaderResult<Exports>](#loaderresult-type);
+function loadBrowserSync<Exports, Imports>(input: [LoaderInput<Imports>](#loaderinputtype)): [LoaderResult<Exports>](#loaderresulttype);
 ```
 
 ## Contributing
