@@ -34,6 +34,19 @@
   },
   "name": "@algoasaurujs/wasm-loader",
   "author": "Ehsan Samavati",
+  "description": "`wasm-loader` is a JavaScript library that provides a WebAssembly loader for your need, allowing developers to use WebAssembly modules in their projects.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/algoasaurujs/wasm-loader.git"
+  },
+  "keywords": [
+    "typescript",
+    "javascript",
+    "webassembly"
+  ],
+  "bugs": {
+    "url": "https://github.com/algoasaurujs/wasm-loader/issues"
+  },
   "module": "dist/wasm-loader.esm.js",
   "size-limit": [
     {
